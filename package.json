@@ -4,10 +4,15 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
-        "test": "node dist/test/test.js"
+        "test": "node dist/index.js",
+        "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts"
     },
     "devDependencies": {
         "@types/node": "^25.5.0",
+        "nodemon": "^3.1.14",
         "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "ts-node": "^10.9.2"
     }
 }
