@@ -9,8 +9,11 @@ export function taskBinaryGap() {
     // loading each number
     const numbers = inputData.split(",").map(Number);
 
+    console.log("Running binary gap task with the following numbers:", numbers);
+
     // we loop though the numbers and call the solution
     for (const number of numbers) {
-        binaryGap(number);
+        const result = binaryGap(number);
+        console.log("Binary gap for", number, ":", result);
     }
 }
