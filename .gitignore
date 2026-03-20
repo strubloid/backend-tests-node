@@ -1,0 +1,15 @@
+# Node and TypeScript
+node_modules/
+dist/
+.env
+*.log
+# OS
+.DS_Store
+Thumbs.db
+# Test output
+coverage/
+# IDE
+.vscode/
+.idea/
+# Misc
+*.tsbuildinfo
