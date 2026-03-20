@@ -1,12 +1,12 @@
-import { taskBinaryGap } from "./01-binary-gap/task";
-import { taskBitwiseOperations } from "./02-bitwise-operations/task";
 import { taskCiclingRotation } from "./03-cicling-rotation/task";
+import { taskBitwiseOperations } from "./02-bitwise-operations/task";
+import { taskBinaryGap } from "./01-binary-gap/task";
 
-// first test
+// task 1
 // taskBinaryGap();
 
-// second test
+// task 2
 // taskBitwiseOperations();
 
-// third test
+// task 3
 taskCiclingRotation();

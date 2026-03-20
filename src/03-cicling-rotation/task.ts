@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import { solution } from "./ciclingRotation";
 
 // Main task function
