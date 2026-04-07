@@ -5,43 +5,34 @@ export function findInOrderSuccessor(inputNode: number, scope: BSTNode) {
     // this will keep the last node that was bigger than the input node
     let successor: BSTNode | null = null;
 
-    // phrase 1: walk the BST to find the target node
-
-    // we loop the tree until we find the node with the given value
-    while (currentNode !== null) {
-        // getting the value of the current node to check
-        let currentValue = currentNode.value;
-
-        // we check if the input node is bigger than the current node, so we push the right otherwise left
-        if (inputNode > currentValue) {
+    // step 1: walk the BST to find the target node, this will stop at the target node
+    while (currentNode !== null && currentNode.value !== inputNode) {
+        // we check the value of the input node is lower than current value
+        if (inputNode < currentNode.value) {
+            successor = currentNode; // we set the successor as the current node because is bigger than the input node
+            currentNode = currentNode.left; // we go to the left subtree
+        } else {
+            // we go to the right subtree
             currentNode = currentNode.right;
-        } else if (inputNode < currentValue) {
-            successor = currentNode;
-            currentNode = currentNode.left;
-        } else if (inputNode === currentValue) {
-            // after we find the node, we only need to check what is the value on the right
-            // if exists a right subtree, the successor is the leftmost node of the right subtree
-
-            // case 1: has a right subtree
-            if (currentNode.right !== null) {
-                // we get the leftmost node of the right subtree
-                let leftmostNode = currentNode.right;
-
-                // check if exists a left node and goes though all left nodes to find the leftmost node
-                while (leftmostNode.left !== null) {
-                    leftmostNode = leftmostNode.left;
-                }
-
-                // we set this leftmost node as the successor
-                successor = leftmostNode;
-            }
-
-            // case 2: no right subtree, we need to check the ancestors
-            return successor ? successor.value : null;
         }
     }
 
-    // return successor !== null ? successor.value : null;
+    // step 2: we check if the currentNode is null
+    if (currentNode === null) {
+        return null;
+    }
+
+    // step 3: we check if we have a right subtree, if we do, the leftmost node is the successor
+    if (currentNode.right !== null) {
+        let leftMost = currentNode.right;
+        while (leftMost.left !== null) {
+            leftMost = leftMost.left;
+        }
+        return leftMost.value;
+    }
+
+    // step 4:  for the case we dont have a right subtree, we just return the successor
+    return successor ? successor.value : null;
 }
 
 export type BSTNode = {

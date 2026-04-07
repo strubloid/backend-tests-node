@@ -55,4 +55,25 @@ describe("BST", () => {
         // we expect the result to be null
         expect(result).toBe(null);
     });
+
+    it("find the in-order successor of a 5", () => {
+        // 5 is a leaf with no right subtree — successor is the ancestor where we last went left
+        const result = findInOrderSuccessor(5, scope);
+
+        expect(result).toBe(9);
+    });
+
+    it("find the in-order successor of a 11", () => {
+        // 11 is a leaf with no right subtree — last left-turn ancestor is 12
+        const result = findInOrderSuccessor(11, scope);
+
+        expect(result).toBe(12);
+    });
+
+    it("find the in-order successor of a 20", () => {
+        // 20 is the root and has a right subtree — leftmost node of right subtree is 25
+        const result = findInOrderSuccessor(20, scope);
+
+        expect(result).toBe(25);
+    });
 });
