@@ -1,3 +1,4 @@
+import { taskCounterLazy } from "./05-counterLazy/task";
 import { taskBSTSearch } from "./04-BSTSearch/task";
 import { taskCiclingRotation } from "./03-cicling-rotation/task";
 import { taskBitwiseOperations } from "./02-bitwise-operations/task";
@@ -13,4 +14,7 @@ import { taskBinaryGap } from "./01-binary-gap/task";
 // taskCiclingRotation();
 
 // task 04
-taskBSTSearch();
+// taskBSTSearch();
+
+// task 05
+taskCounterLazy();

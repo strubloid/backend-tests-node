@@ -1,0 +1,32 @@
+Problem: Max Counters with Lazy Updates
+
+You are given:
+
+An integer N representing N counters (initially all set to 0)
+An array A of operations
+Operations:
+If A[i] = X where 1 ≤ X ≤ N → increase counter X by 1
+If A[i] = N + 1 → set all counters to the maximum value of any counter
+Goal:
+
+Return the final state of all counters.
+
+Example:
+N = 5
+A = [3, 4, 4, 6, 1, 4, 4]
+
+Step-by-step:
+
+increase(3) → [0,0,1,0,0]
+increase(4) → [0,0,1,1,0]
+increase(4) → [0,0,1,2,0]
+max counter → [2,2,2,2,2]
+increase(1) → [3,2,2,2,2]
+increase(4) → [3,2,2,3,2]
+increase(4) → [3,2,2,4,2]
+Output:
+[3,2,2,4,2]
+Constraints:
+1 ≤ N ≤ 100,000
+1 ≤ len(A) ≤ 100,000
+Must be efficient: O(N + M) expected
