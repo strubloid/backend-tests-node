@@ -76,4 +76,38 @@ describe("BST", () => {
 
         expect(result).toBe(25);
     });
+
+    it("returns null when the value does not exist in the tree", () => {
+        // 99 is not in the tree — function should return null, not crash
+        const result = findInOrderSuccessor(99, scope);
+
+        expect(result).toBe(null);
+    });
+
+    it("returns null when the tree has only one node", () => {
+        // single node tree has no successor at all
+        const singleNode: BSTNode = { value: 42, left: null, right: null };
+        const result = findInOrderSuccessor(42, singleNode);
+
+        expect(result).toBe(null);
+    });
+
+    it("returns null when searching for the root of a left-only tree", () => {
+        // root has no right subtree and no ancestor — successor must be null
+        const leftOnlyTree: BSTNode = {
+            value: 20,
+            left: { value: 10, left: null, right: null },
+            right: null,
+        };
+        const result = findInOrderSuccessor(20, leftOnlyTree);
+
+        expect(result).toBe(null);
+    });
+
+    it("returns null when the value is larger than all nodes in the tree", () => {
+        // value exists and is the maximum — no node comes after it
+        const result = findInOrderSuccessor(25, scope);
+
+        expect(result).toBe(null);
+    });
 });
