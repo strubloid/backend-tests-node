@@ -4,13 +4,21 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
-        "test": "node dist/index.js",
+        "test": "jest",
+        "test:watch": "jest --watchAll",
         "dev": "ts-node-dev --respawn --watch src --poll src/index.ts"
     },
     "devDependencies": {
+        "@types/jest": "^30.0.0",
         "@types/node": "^25.5.0",
+        "jest": "^30.3.0",
+        "ts-jest": "^29.4.9",
         "ts-node-dev": "^2.0.0",
         "typescript": "^5.0.0"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "testEnvironment": "node"
     },
     "dependencies": {
         "ts-node": "^10.9.2"

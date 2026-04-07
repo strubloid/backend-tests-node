@@ -1,24 +1,33 @@
 export function binaryGap(N: number): number {
-    // step 1: get the binary representation of the number
-    const binary = N.toString(2);
-
-    // step 2: find the sequences of zeros that are surrounded by ones
     let maxGap = 0;
-    let currentGap = 0;
-    let foundOne = false;
 
-    // we loop the binary string and count the zeros between ones
-    for (const char of binary) {
-        // when we find a 1, we can check how many zeros we find
+    // we check if isnt a valid number passed
+    if (typeof N !== "number" || isNaN(N)) {
+        throw new Error("Input must be a valid number");
+    }
+
+    // first we convert the number into binary string
+    const binaryString = N.toString(2);
+
+    console.log(`Binary String: ${binaryString}`);
+
+    // we have the count of the gaps
+    let currentGap = 0;
+
+    let inGap = false;
+
+    // we loop through the binary string
+    for (const char of binaryString) {
+        // we check if  te char is a number 1, so we can start the count
         if (char === "1") {
-            // we only update the max gap if we find an 1 afterwards
-            if (foundOne) {
+            // after we find the second 1, we need to put the highest value
+            if (inGap) {
                 maxGap = Math.max(maxGap, currentGap);
             }
 
-            foundOne = true;
             currentGap = 0;
-        } else if (foundOne) {
+            inGap = true;
+        } else if (inGap) {
             currentGap++;
         }
     }
